@@ -15,7 +15,8 @@ module VideoThumbnailer
 
     def generate_command_gif options = {}
       options = VideoThumbnailer::Options.new(options)
-      %Q(ffmpeg -i #{input_path} -vf scale=500:400 -r 5 -t 00:00:05 #{output_path})
+      # %Q(ffmpeg -i #{input_path} -vf scale=500:400 -r 5 -t 00:00:05 #{output_path})
+      %Q(ffmpeg  -ss 0 -t 10 -i #{input_path} -vf scale=400:-1 -frames 60 -r "50" #{output_path})
       # %Q(ffmpeg #{options.to_options} #{output_path} -i #{input_path})
     end
   end
